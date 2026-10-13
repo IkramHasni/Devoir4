@@ -1,0 +1,56 @@
+<div class="container">
+    <div>
+      <h2>Modifier une Fragrance :</h2>
+    </div>
+         <form >
+             <div class="col-sm-2 col-md-2 col-lg-2">
+               <label >ID Fragrance</label>
+               <input readonly type="text" [(ngModel)]="currentFragrance.idFragrance"
+                   name="idFragrance" class="form-control">
+              </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4" >
+               <label >Nom Fragrance</label>
+               <input type="text" [(ngModel)]="currentFragrance.nomFragrance"
+                   name="nomFragrance" class="form-control">
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4" >
+               <label >Marque</label>
+               <input type="text" [(ngModel)]="currentFragrance.marque"
+                   name="marque" class="form-control">
+             </div>
+
+             <div class="col-sm-2 col-md-2 col-lg-2">
+               <label >Volume (ml)</label>
+               <input type="number" [(ngModel)]="currentFragrance.volumeMl"
+                   name="volumeMl" class="form-control">
+             </div>
+
+             <div class="col-sm-2 col-md-2 col-lg-2">
+               <label >Prix Fragrance</label>
+               <input type="number" [(ngModel)]="currentFragrance.prixFragrance"
+                   name="prixFragrance" class="form-control">
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4">
+                 <label >Date création</label>
+    <input type="date" [ngModel]="currentFragrance.dateCreation | date: 'yyyy-MM-dd'"
+    (ngModelChange)="currentFragrance.dateCreation = $event" name="dateCreation"
+    class="form-control">
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4">
+              <label>Famille olfactive</label>
+              <select class="form-control form-control-lg" id="idFam" name="idFam" [(ngModel)]="updatedFamId">
+                @for(fam of familles; track fam.idFam){
+                  <option [value]="fam.idFam">{{fam.nomFam}}</option>
+                }
+              </select>
+             </div>
+
+              <div class="mt-2">
+<button type="submit" (click)="updateFragrance()" class="btn btn-success">Modifier</button>
+              </div>
+         </form>
+</div>

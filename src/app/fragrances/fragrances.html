@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+     <table class="table table-striped">
+        <tr> <th>N°</th><th>Id</th><th>Nom</th> <th>Marque</th> <th>Volume (ml)</th> <th>Prix</th>  <th>Date Création</th> <th>Famille</th> </tr>
+         @for (fragrance of fragrances; track fragrance.idFragrance; let index =$index; let nbr=$count; let first = $first; let last = $last)
+         {
+           @if(first)
+          {  <h1>Nombre : {{nbr}}</h1>}
+
+          <tbody >
+            <tr >
+               <td>{{index}}</td>
+               <td>{{fragrance.idFragrance}}</td>
+               <td>{{fragrance.nomFragrance}}</td>
+               <td>{{fragrance.marque}}</td>
+               <td>{{fragrance.volumeMl}}</td>
+               <td>{{fragrance.prixFragrance}}</td>
+               <td>{{fragrance.dateCreation | date:'dd/MM/yyyy'}}</td>
+               @if(fragrance.famille){
+                <td>{{fragrance.famille.nomFam}}</td>
+               }
+               @else {
+                <td>PAS DE FAMILLE</td>
+               }
+               <td><a class="btn btn-danger" (click)="supprimerFragrance(fragrance)">Supprimer</a></td>
+               <td><a class="btn btn-success" [routerLink]="['/updateFragrance',fragrance.idFragrance]">Modifier</a></td>
+             </tr>
+          </tbody>
+         }
+
+         @empty {
+          <h1>Aucune fragrance trouvée !</h1>
+         }
+
+    </table>
+    </div>
+  </div>
+</div>

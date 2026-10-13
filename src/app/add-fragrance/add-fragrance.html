@@ -1,0 +1,56 @@
+<div class="container">
+    <div>
+      <h2>Ajouter une Fragrance :</h2>
+    </div>
+         <form >
+
+             <div class="col-sm-2 col-md-2 col-lg-2">
+               <label >ID Fragrance</label>
+               <input type="text" [(ngModel)]="newFragrance.idFragrance"
+                   name="idFragrance" class="form-control">
+              </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4" >
+               <label >Nom Fragrance</label>
+               <input type="text" [(ngModel)]="newFragrance.nomFragrance"
+                   name="nomFragrance" class="form-control">
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4" >
+               <label >Marque</label>
+               <input type="text" [(ngModel)]="newFragrance.marque"
+                   name="marque" class="form-control">
+             </div>
+
+             <div class="col-sm-2 col-md-2 col-lg-2">
+               <label >Volume (ml)</label>
+               <input type="number" [(ngModel)]="newFragrance.volumeMl"
+                   name="volumeMl" class="form-control">
+             </div>
+
+             <div class="col-sm-2 col-md-2 col-lg-2">
+               <label >Prix Fragrance</label>
+               <input type="number" [(ngModel)]="newFragrance.prixFragrance"
+                   name="prixFragrance" class="form-control">
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4">
+                 <label >Date création</label>
+                 <input type="date" [(ngModel)]="newFragrance.dateCreation"
+                     name="dateCreation" class="form-control">
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4">
+              <label>Famille olfactive</label>
+              <select class="form-control form-control-lg" id="idFam" name="idFam" [(ngModel)]="newIdFam">
+                @for(fam of familles; track fam.idFam){
+                  <option [value]="fam.idFam">{{fam.nomFam}}</option>
+                }
+              </select>
+             </div>
+
+       <div class="mt-2">
+  <button type="submit" (click)="addFragrance()" class="btn btn-success">Ajouter</button>
+       </div>
+         </form>
+</div>
